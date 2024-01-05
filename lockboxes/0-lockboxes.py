@@ -26,3 +26,4 @@ def canUnlockAll(boxes):
             return True
 
         range_boxes = not_found
+        
