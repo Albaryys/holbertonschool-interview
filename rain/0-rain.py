@@ -1,24 +1,32 @@
 #!/usr/bin/python3
+"""
+Defines a function that calculates how much rainwater will be retained
+given a list of non-negative integers that represents walls of width 1
+"""
+
 
 def rain(walls):
-    if not walls:
+    """
+    Calculates rainwater retention given list representing walls
+
+    parameters:
+        walls [list of non-negative ints]:
+            represents walls of width 1
+            assume the ends of the list are not walls, will not retain water
+
+    returns:
+        [int]: representing the total amount of rainwater retained
+            if walls list is empty, returns 0
+    """
+    if type(walls) is not list or walls is []:
         return 0
-    
-    total_water = 0
-    left_max = [0] * len(walls)
-    right_max = [0] * len(walls)
-    
-    left_max[0] = walls[0]
-    for i in range(1, len(walls)):
-        left_max[i] = max(left_max[i-1], walls[i])
-    
-    right_max[-1] = walls[-1]
-    for i in range(len(walls)-2, -1, -1):
-        right_max[i] = max(right_max[i+1], walls[i])
-    
-    for i in range(len(walls)):
-        water_level = min(left_max[i], right_max[i])
-        if water_level > walls[i]:
-            total_water += water_level - walls[i]
-    
-    return total_water
+    for i in walls:
+        if i < 0:
+            return 0
+    amount = 0
+    for index, height in enumerate(walls):
+        left_max = max(walls[:index + 1])
+        right_max = max(walls[index:])
+        shorter_wall = min(left_max, right_max)
+        amount += max(shorter_wall - height, 0)
+    return amount
