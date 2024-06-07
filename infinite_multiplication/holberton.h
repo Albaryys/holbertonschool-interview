@@ -1,12 +1,18 @@
-#ifndef _MUL_H
-#define _MUL_H
+#ifndef _MULTI_H_
+#define _MULTI_H_
+
+#define _TRUE_ 1
+#define _FALSE_ 0
+#define MAX1 2500
+#define MAX2 2500
+
 #include <stdlib.h>
+#include <stdio.h>
+
 int _putchar(char c);
-void print_answer(int *answer, int size_h);
-void sum_up(int *sum[], int *answer, int size_h, int size_v);
-void fill_zeros(int *sum[], int size_v, int size_h);
-void to_number(char argv[], int size, int n[]);
-void mul_line(int n1, int *n2, int size, int size_v, int **sum, int level);
-void error(void);
-int check_number(char *argv[], int lens[]);
-#endif
+void multiply(char *num_1, char *num_2);
+int is_a_number(char *a_str);
+void sum_and_print(char answer[MAX1][MAX2], int len_1, int len_2);
+int str_len(char *a);
+
+#endif /*_MULTI_H_*/
