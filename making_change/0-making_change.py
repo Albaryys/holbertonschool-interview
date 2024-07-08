@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Module used to add two arrays."""
 
-def make_change(coins, total):
+def make_Change(coins, total):
     """
     Calculates the minimum number of coins needed to make change for a given total.
 
