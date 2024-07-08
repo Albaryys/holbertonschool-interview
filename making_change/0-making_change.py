@@ -1,30 +1,36 @@
 #!/usr/bin/python3
 """Module used to add two arrays."""
 
-def make_Change(coins, total):
-    """
-    Calculates the minimum number of coins needed to make change for a given total.
+
+def makeChange(coins, total):
+    """[Given a pile of coins of different values, determine the fewest number
+            of coins needed to meet a given amount total]
 
     Args:
-        coins (list): A list of coin denominations available.
-        total (int): The total amount to make change for.
+            coins ([list]): [list of the values of your the coins]
+                              The value of a coin will always be an int > 0
+            total ([type]): [description]
 
     Returns:
-        int: The minimum number of coins needed to make change for the total.
-             Returns -1 if it is not possible to make change for the total.
+            c [int]: (change  [fewest number of coins needed to meet total]
     """
-    
-    if total < 0:
-        return -1
-    if total == 0:
+
+    if total <= 0:
         return 0
-    
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
-    
-    for i in range(1, total + 1):
-        for coin in coins:
-            if i - coin >= 0:
-                dp[i] = min(dp[i], dp[i - coin] + 1)
-    
-    return dp[total] if dp[total] != float('inf') else -1
+
+    # verify coins is a valid
+    if (coins is None or len(coins) == 0):
+        return -1
+
+    change = 0
+    my_coins = sorted(coins, reverse=True)
+    money_left = total
+
+    for coin in my_coins:
+        while (money_left % coin >= 0 and money_left >= coin):
+            change += int(money_left / coin)
+            money_left = money_left % coin
+
+    change = change if money_left == 0 else -1
+
+    return change
