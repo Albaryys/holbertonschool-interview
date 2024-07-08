@@ -1,6 +1,17 @@
 #!/usr/bin/python3
 
-def makeChange(coins, total):
+def make_change(coins, total):
+    """
+    Calculates the minimum number of coins needed to make change for a given total.
+
+    Args:
+        coins (list): A list of coin denominations available.
+        total (int): The total amount to make change for.
+
+    Returns:
+        int: The minimum number of coins needed to make change for the total.
+             Returns -1 if it is not possible to make change for the total.
+    """
     if total < 0:
         return -1
     if total == 0:
