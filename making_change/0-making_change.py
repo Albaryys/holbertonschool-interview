@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Module used to add two arrays."""
 
 def make_change(coins, total):
     """
@@ -12,6 +13,7 @@ def make_change(coins, total):
         int: The minimum number of coins needed to make change for the total.
              Returns -1 if it is not possible to make change for the total.
     """
+    
     if total < 0:
         return -1
     if total == 0:
